@@ -19,4 +19,4 @@ def check_customers():
             print(f"{i[0]} is your customer ")
             if i[2] == False :
                 print("this customer is Blocked")
-
+#todo
