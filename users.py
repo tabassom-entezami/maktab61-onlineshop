@@ -1,8 +1,9 @@
 import file_handler as fh
 
 a = fh.FileHandler("users.csv")
-kalas = fh.FileHandler("kalas.csv")
-
+b = fh.FileHandler("kalas.csv")
+users = a.read_file()
+kalas = b.read_file()
 
 class Customer:
     def __init__(self, username, password):
@@ -23,9 +24,11 @@ class Boss:
                        "time_close": time_close})
 
 
+
+
 class Kala:
     def __init__(self, name_of_seller, name_of_shop, name, number, *args):
-        kalas.add_to_file(
+        b.add_to_file(
             {"name_of_seller": name_of_seller, "name_of_shop": name_of_shop, "name": name, "number": number,
              "other_things": args})
 

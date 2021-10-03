@@ -64,16 +64,18 @@ while True:
                 print("we could not find your username pls try again")
 
             if act:
+                seller.check_for_kala(user_name)
                 while True:
                     t = 0
                     seller.menu()
                     ans = input(" > ")
                     if ans == "1":
+                        name = input("name of product")
+                        number = input("number of that")
                         print(
                             "pls enter object keys (like color) and then object values (like Red) and when you are done enter end ")
                         obj = {}
-                        name = input("name of product")
-                        number = input("number of that")
+
                         while True:
                             key = input(" key ")
                             if key == "end":
