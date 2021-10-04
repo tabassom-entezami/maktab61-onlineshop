@@ -5,6 +5,8 @@ a= fh.FileHandler("users.csv")
 users =a.read_file()
 b = fh.FileHandler("kalas.csv")
 kalas = b.read_file()
+c= fh.FileHandler("block.csv")
+blocked = c.read_file()
 def menu():
     print("""__________
 1.Product registration
@@ -15,12 +17,15 @@ def menu():
 ___________""")
 
 
-def check_customers():
+
+
+def check_customers(seller):
     for i in users:
         if len(i) > 3  :
             print(f"{i[0]} is your customer ")
-            if i[2] == False :
-                print("this customer is Blocked")
+            for j in blocked:
+                if j["seler"] == seller and j["blocked"] == i[0]:
+                    print("this user is blocked!")
 
 def check_for_kala(number_of_seller):
         for i in kalas:
@@ -28,8 +33,4 @@ def check_for_kala(number_of_seller):
                 print(f"""pls know that you have less than 5 of {i["name"]}""")
 
 
-def menucus():
-    print("""1.your factor 
-2.shops
-3.search a shop
-""")
+

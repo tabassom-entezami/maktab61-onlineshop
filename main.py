@@ -4,6 +4,7 @@ import file_handler as fh
 import users
 import hashlib
 import seller
+import customer
 
 a = fh.FileHandler("users.csv")
 a = fh.FileHandler.read_file(a)
@@ -96,7 +97,7 @@ while True:
                         else:
                             print("you don not have anything")
                     elif ans == "3":
-                        seller.check_customers()
+                        seller.check_customers(user_name)
                     elif ans == "4":
                         blocked = input("number of bad person : ")
                         block.add_to_file({"seller": user_name, "blocked": blocked})
@@ -107,8 +108,31 @@ while True:
                         print("pls enter a correct number")
 
             if shop:
-                pass
-
+                while True:
+                    customer.customer_menu()
+                    input_user = input(" > ")
+                    if input_user == "1":
+                        for i in kala:
+                            print (f"""{i["name_of_shop"] has i["name"] which has i["other_things"]}""")
+                    elif input_user == "2":
+                        for i in a :
+                            if len (i)>3:
+                                if i["time_to_open"] < time_of_doing.hour and i["time_to_close"] > time_of_doing.hour:
+                                    print(i["store_name"])
+                        print("all the malls")
+                    elif input_user == "3":
+                        themall = input("pls enter the mall name : ")
+                        for i in a:
+                            pass
+                    elif input_user=="4":
+                        pass
+                    elif input_user == "5":
+                        pass
+                    elif input_user=="6":
+                        break
+                    else:
+                        print("pls enter a correct number")
+                        time.sleep(3)
 
 
         elif choose == 2:
@@ -208,8 +232,8 @@ while True:
     except ValueError:
         print("pls enter a correct number  ")
         time.sleep(3)
-    # except Exception:
-    #     print("pls look at the menu and choose a correct number ")
-    #     time.sleep(3)
+    except Exception:
+        print("pls look at the menu and choose a correct number ")
+        time.sleep(3)
     except KeyboardInterrupt:
         print("you finish the program")

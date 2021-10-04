@@ -26,8 +26,6 @@ class FileHandler:
             writer.writerows(new_value)
 
 
-
-
     def unblock_an_user(self, seller,value):
         inputs = []
         with open(self.file_path, 'r+') as myfile:
