@@ -9,7 +9,7 @@ class Customer:
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        a.add_to_file({"username": username, "password": password, "check": True})
+        a.add_to_file({"username": username, "password": password})
 
 
 class Boss:
@@ -19,7 +19,7 @@ class Boss:
         self.store_name = store_name
         self.time_open = time_open
         self.time_close = time_close
-        a.add_to_file({"username": username, "password": password, "check": True, "store_name": store_name,
+        a.add_to_file({"username": username, "password": password,  "store_name": store_name,
                        "time_open": time_open,
                        "time_close": time_close})
 

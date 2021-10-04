@@ -25,27 +25,17 @@ class FileHandler:
                 writer.writeheader()
             writer.writerows(new_value)
 
-    def block_an_user(self, value):
-        inputs = []
-        with open(self.file_path, 'r+') as myfile:
-            reader = csv.DictReader(myfile)
-            inputs.append(list(reader))
-        for i in range(len(inputs)):
-            if inputs[i]["username"] == value:
-                inputs[i]["check"] = False
-        with open(self.file_path, "w") as myfile:
-            for i in range(len(inputs)):
-                writer = DictWriter(myfile)
-                writer.writerows(inputs[i])
 
-    def unblock_an_user(self, value):
+
+
+    def unblock_an_user(self, seller,value):
         inputs = []
         with open(self.file_path, 'r+') as myfile:
             reader = csv.DictReader(myfile)
             inputs.append(list(reader))
         for i in range(len(inputs)):
-            if inputs[i]["username"] == value:
-                inputs[i]["check"] = True
+            if inputs[i]["seller"] == seller and inputs[i]["blocked"] == value:
+                inputs.remove(inputs[i])
         with open(self.file_path, "w") as myfile:
             for i in range(len(inputs)):
                 writer = DictWriter(myfile)

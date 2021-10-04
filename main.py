@@ -1,3 +1,4 @@
+import datetime
 import time
 import file_handler as fh
 import users
@@ -8,6 +9,8 @@ a = fh.FileHandler("users.csv")
 a = fh.FileHandler.read_file(a)
 kala = fh.FileHandler("kalas.csv")
 kala = fh.FileHandler.read_file(kala)
+block = fh.FileHandler("block.csv")
+blocking = fh.FileHandler.read_file(block)
 
 
 def menu():
@@ -48,6 +51,7 @@ while True:
                     store = i["store_name"]
                     if i["password"] == hashlib.sha256(user_pass.encode()).hexdigest():
                         act = True
+                        time_of_doing = datetime.datetime.now()
                         break
                     else:
                         print("your pass was wrong try to sing in again")
@@ -56,6 +60,7 @@ while True:
                     user_pass = input("pls enter your password : ")
                     if i["password"] == hashlib.sha256(user_pass.encode()).hexdigest():
                         shop = True
+                        time_of_doing = datetime.datetime.now()
                         break
                     else:
                         print("your pass was wrong try to sing in again")
@@ -75,15 +80,14 @@ while True:
                         print(
                             "pls enter object keys (like color) and then object values (like Red) and when you are done enter end ")
                         obj = {}
-
                         while True:
                             key = input(" key ")
                             if key == "end":
                                 break
                             val = input(" value ")
                             obj.update({key: val})
-                        print(user_name, store, obj)
                         users.Kala(user_name, store, name, number, obj)
+                        print("kala is added")
                     elif ans == "2":
                         for i in kala:
                             if i["name_of_seller"] == user_name:
@@ -95,14 +99,15 @@ while True:
                         seller.check_customers()
                     elif ans == "4":
                         blocked = input("number of bad person : ")
-                        a.block_an_user(blocked)
+                        block.add_to_file({"seller": user_name, "blocked": blocked})
+                        print("the number is now blocked")
                     elif ans == "5":
                         break
                     else:
                         print("pls enter a correct number")
 
-
-
+            if shop:
+                pass
 
 
 

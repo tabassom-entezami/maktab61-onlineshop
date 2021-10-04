@@ -23,7 +23,13 @@ def check_customers():
                 print("this customer is Blocked")
 
 def check_for_kala(number_of_seller):
-        for i in range(len(kalas)):
-            if kalas[0] == number_of_seller and kalas[3]< 5 :
-                print(f"pls know that you have under 5 from {kalas[2]}")
-#todo
+        for i in kalas:
+            if i["name_of_seller"] == number_of_seller and int(i["number"] )< 5:
+                print(f"""pls know that you have less than 5 of {i["name"]}""")
+
+
+def menucus():
+    print("""1.your factor 
+2.shops
+3.search a shop
+""")
